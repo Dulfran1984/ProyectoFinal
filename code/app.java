@@ -5,9 +5,13 @@ public class app {
     public static void main(String[] args) {
         fnt_menuPrincipal(true);
     }
-    private static void fnt_pacientes(){
-        String opcionesPac = JOptionPane.showInputDialog(null, 
+    private static void fnt_pacientes(boolean mp){
+        while (mp == true){
+            String opcionesPac = JOptionPane.showInputDialog(null, 
             "MENU PACIENTES\n\n1. REGISTRAR\n2. CONSULTAR\n3. SALIR");
+            if(opcionesPac.equals("3")){
+                mp = false;
+            }
             if (opcionesPac.equals("1")){
                 boolean sw = false;
                 String id = JOptionPane.showInputDialog(null, "ID");
@@ -46,13 +50,14 @@ public class app {
                     JOptionPane.showMessageDialog(null, "Este paciente no se encuentra registrado");
                 }
             }
+        }
     }
     private static void fnt_menuPrincipal(boolean m){
         while (m == true){
             String opcionesStr = JOptionPane.showInputDialog(null, 
             "MENÚ PRINCIPAL\n\n1. NUEVO PACIENTE\n2. NUEVA CITA\n3. REPORTE\n4. SALIR");
             if (opcionesStr.equals("1")){
-                fnt_pacientes();
+                fnt_pacientes(true);
             }
         }
     }
